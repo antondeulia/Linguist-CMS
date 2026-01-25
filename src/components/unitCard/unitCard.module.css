@@ -1,0 +1,42 @@
+.unit {
+	position: relative;
+	border: 1px solid gray;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.unit:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.link {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.title {
+	font-size: 22px;
+}
+
+.buttons {
+	position: relative;
+	z-index: 2;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: 1px solid gray;
+}
+
+.btn:hover {
+	background: gray;
+	color: white;
+}

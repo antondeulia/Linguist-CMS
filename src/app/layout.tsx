@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import Sidebar from "@/components/sidebar/Sidebar"
 
 export const metadata: Metadata = {
 	title: "Linguist-CMS",
@@ -12,7 +13,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<Sidebar />
+				<main>{children}</main>
+			</body>
 		</html>
 	)
 }

@@ -1,0 +1,16 @@
+.track {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.title {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.units {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 16px;
+}

@@ -1,0 +1,36 @@
+.sidebar {
+	min-height: 100vh;
+	width: 300px;
+	border-right: 1px solid gray;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 8px;
+
+	.title {
+		font-size: 32px;
+	}
+
+	.items {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		.item {
+			border: 1px solid gray;
+			cursor: pointer;
+
+			.link {
+				display: block;
+				padding: 16px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	.sidebar {
+		display: none;
+	}
+}
