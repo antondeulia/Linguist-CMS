@@ -1,6 +1,7 @@
 import { ICourse } from "@/core/interfaces"
 import styles from "./courseCard.module.css"
 import Link from "next/link"
+import CourseCardActions from "./CourseCardActions/CourseCardActions"
 
 type Props = {
 	course: ICourse
@@ -17,10 +18,7 @@ export default function CourseCard({ course }: Props) {
 				<span>{course.targetLang}</span>
 			</div>
 
-			<div className={styles.buttons}>
-				<button className={styles.btn}>Edit</button>
-				<button className={styles.btn}>Delete</button>
-			</div>
+			<CourseCardActions id={course.id} />
 		</li>
 	)
 }

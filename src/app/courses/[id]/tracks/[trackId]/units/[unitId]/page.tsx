@@ -2,6 +2,7 @@ import ArrowBack from "@/components/arrowBack/ArrowBack"
 import styles from "./page.module.css"
 import { IUnit } from "@/core/interfaces"
 import ExerciseCard from "@/components/exerciseCard/ExerciseCard"
+import CreateExerciseCard from "@/components/exerciseCard/createExerciseCard/CreateExerciseCard"
 
 type Props = {
 	params: Promise<{
@@ -49,6 +50,8 @@ export default async function Unit({ params }: Props) {
 						unitId={unitId}
 					/>
 				))}
+
+				<CreateExerciseCard />
 			</ul>
 		</div>
 	)

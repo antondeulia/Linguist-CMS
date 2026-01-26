@@ -2,6 +2,7 @@ import ArrowBack from "@/components/arrowBack/ArrowBack"
 import { ITrack } from "@/core/interfaces"
 import styles from "./page.module.css"
 import UnitCard from "@/components/unitCard/UnitCard"
+import CreateUnitCard from "@/components/unitCard/createUnitCard/CreateUnitCard"
 
 type Props = {
 	params: Promise<{
@@ -44,6 +45,8 @@ export default async function Track({ params }: Props) {
 						trackId={trackId}
 					/>
 				))}
+
+				<CreateUnitCard />
 			</ul>
 		</div>
 	)

@@ -4,17 +4,21 @@
 	border-right: 1px solid gray;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
 	padding: 8px;
 
 	.title {
 		font-size: 32px;
 	}
 
+	.email {
+		margin-top: 10px;
+		margin-bottom: 50px;
+	}
+
 	.items {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 12px;
 
 		.item {
 			border: 1px solid gray;
@@ -26,7 +30,31 @@
 				text-align: center;
 			}
 		}
+
+		.item:hover {
+			background-color: gray;
+			color: white;
+		}
+
+		.active {
+			background-color: gray;
+			color: white;
+		}
 	}
+}
+
+.logout {
+	margin-top: auto;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid gray;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.logout:hover {
+	background-color: gray;
+	color: white;
 }
 
 @media (max-width: 640px) {

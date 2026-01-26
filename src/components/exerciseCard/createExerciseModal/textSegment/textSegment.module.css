@@ -1,0 +1,14 @@
+.segment {
+	padding: 3px 5px;
+	border: 1px solid gray;
+	display: flex;
+	flex-direction: column;
+	max-width: max-content;
+}
+
+.text {
+}
+
+.input {
+	max-width: 12ch;
+}

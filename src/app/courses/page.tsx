@@ -31,11 +31,11 @@ export default async function Courses() {
 			/>
 
 			<ul className={styles.cards}>
-				<CreateCourseCard />
-
 				{courses.map((course) => (
 					<CourseCard key={course.id} course={course} />
 				))}
+
+				<CreateCourseCard />
 			</ul>
 		</div>
 	)

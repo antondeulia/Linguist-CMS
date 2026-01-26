@@ -1,0 +1,18 @@
+.buttons {
+	position: relative;
+	z-index: 2;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.btn {
+	padding: 5px 10px;
+	border: 1px solid gray;
+}
+
+.btn:hover {
+	background: gray;
+	color: white;
+}

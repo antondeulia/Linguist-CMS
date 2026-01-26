@@ -2,6 +2,7 @@ import TrackCard from "@/components/trackCard/TrackCard"
 import { ICourse } from "@/core/interfaces"
 import styles from "./page.module.css"
 import ArrowBack from "@/components/arrowBack/ArrowBack"
+import CreateTrackCard from "@/components/trackCard/createTrackCard/CreateTrackCard"
 
 const getCourse = async (id: string): Promise<ICourse> => {
 	try {
@@ -38,6 +39,8 @@ export default async function Course({ params }: Props) {
 				{course.tracks.map((track) => (
 					<TrackCard key={track.id} track={track} courseId={course.id} />
 				))}
+
+				<CreateTrackCard />
 			</ul>
 		</div>
 	)
