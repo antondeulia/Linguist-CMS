@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import Sidebar from "@/components/sidebar/Sidebar"
+import Header from "@/components/header/Header"
 
 export const metadata: Metadata = {
 	title: "Linguist-CMS",
@@ -12,7 +14,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<Sidebar />
+				<div className="block">
+					<Header />
+					<main>{children}</main>
+				</div>
+			</body>
 		</html>
 	)
 }

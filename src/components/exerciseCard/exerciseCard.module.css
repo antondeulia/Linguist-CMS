@@ -1,0 +1,23 @@
+.exercise {
+	position: relative;
+	border: 1px solid gray;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.exercise:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.link {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.title {
+	font-size: 22px;
+}
