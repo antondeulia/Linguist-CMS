@@ -1,11 +1,19 @@
 "use server"
 
+import { Segment } from "@/components/exerciseCard/createExerciseModal/textSegment/TextSegment"
 import { revalidatePath } from "next/cache"
 
-export default async function createExerciseAction(data: {
+export type CreateExerciseInput = {
 	name: string
 	unitId: string
-}) {
+	rawText: string
+	type: string
+	direction: string
+	segments: Segment[]
+	hover: boolean
+}
+
+export default async function createExerciseAction(data: CreateExerciseInput) {
 	const res = await fetch("http://localhost:4200/api/exercises", {
 		method: "POST",
 		headers: {

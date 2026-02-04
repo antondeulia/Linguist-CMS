@@ -7,7 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { CreateExerciseForm, createExerciseSchema } from "@/schemas"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "next/navigation"
-import TextSegment from "./textSegment/TextSegment"
+import TextSegment, { Segment } from "./textSegment/TextSegment"
+import { CreateExerciseInput } from "@/app/actions"
+import createExerciseAction from "@/app/actions/createExercise"
 
 export default function CreateExerciseModal() {
 	const isOpen = useCreateExerciseModalStore((s) => s.isOpen)
@@ -33,21 +35,21 @@ export default function CreateExerciseModal() {
 	const { unitId } = useParams<{ unitId: string }>()
 
 	const onSubmit = async (data: CreateExerciseForm) => {
-		console.log(data)
-		console.log(segments)
-		// createExerciseAction({ name: data.name, unitId })
-		close()
+		const exerciseToCreate: CreateExerciseInput = {
+			name: data.name,
+			rawText: data.text,
+			direction: data.direction,
+			type: "exercise",
+			hover: true,
+			unitId,
+			segments,
+		}
+
+		createExerciseAction(exerciseToCreate)
+		// close()
 	}
 
-	const [segments, setSegments] = useState<
-		| {
-				id: string
-				text: string
-				translation: string
-				hover: boolean
-		  }[]
-		| null
-	>(null)
+	const [segments, setSegments] = useState<Segment[]>([])
 
 	function splitTextToSegments() {
 		const text = getValues("text")
@@ -71,6 +73,70 @@ export default function CreateExerciseModal() {
 	}
 
 	const inputsRef = useRef<HTMLInputElement[]>([])
+
+	function findNextHoverIndex(segments: Segment[], from: number) {
+		for (let i = from + 1; i < segments.length; i++) {
+			if (segments[i].hover) return i
+		}
+		return -1
+	}
+
+	function mergeWithNext(index: number) {
+		setSegments((prev) => {
+			if (!prev) return prev
+
+			const nextIndex = findNextHoverIndex(prev, index)
+			if (nextIndex === -1) return prev
+
+			const a = prev[index]
+			const b = prev[nextIndex]
+
+			const middle = prev
+				.slice(index + 1, nextIndex)
+				.map((s) => s.text)
+				.join("")
+
+			const merged = {
+				...a,
+				text: a.text + middle + b.text,
+				translation: "",
+				mergedFrom: {
+					ids: [a.id, b.id],
+					texts: [a.text, b.text],
+				},
+			}
+
+			return [...prev.slice(0, index), merged, ...prev.slice(nextIndex + 1)]
+		})
+	}
+
+	function unmerge(index: number) {
+		setSegments((prev) => {
+			if (!prev) return prev
+
+			const seg = prev[index]
+			if (!seg.mergedFrom) return prev
+
+			const [textA, textB] = seg.mergedFrom.texts
+
+			const restored = [
+				{
+					id: crypto.randomUUID(),
+					text: textA,
+					translation: "",
+					hover: true,
+				},
+				{
+					id: crypto.randomUUID(),
+					text: textB,
+					translation: "",
+					hover: true,
+				},
+			]
+
+			return [...prev.slice(0, index), ...restored, ...prev.slice(index + 1)]
+		})
+	}
 
 	if (!isOpen) return null
 
@@ -120,6 +186,8 @@ export default function CreateExerciseModal() {
 											onNext={() =>
 												inputsRef.current[i + 1]?.focus()
 											}
+											onMerge={mergeWithNext}
+											onUnmerge={unmerge}
 										/>
 									)
 								})}
