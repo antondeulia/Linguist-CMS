@@ -9,7 +9,6 @@ type CreateExerciseModalState = {
 export const useCreateExerciseModalStore = create<CreateExerciseModalState>((set) => ({
 	isOpen: false,
 	open: () => {
-		console.log("OPEN")
 		set({ isOpen: true })
 	},
 	close: () => set({ isOpen: false }),
