@@ -5,7 +5,7 @@ type FetchOptions = RequestInit & {
 export async function apiFetch(path: string, options: FetchOptions = {}) {
 	const validPath = path.startsWith("/") ? path : "/" + path
 
-	const res = await fetch(`${process.env.API_BASE_URL}${validPath}`, {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${validPath}`, {
 		...options,
 		headers: {
 			"Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import CreateCourseModal from "@/components/courseCard/createCourseModal/CreateCourseModal"
+import CreateCourseModal from "@/components/cards/courseCard/createCourseModal/CreateCourseModal"
 
 type Props = {
 	children: React.ReactNode

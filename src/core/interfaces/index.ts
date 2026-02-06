@@ -3,6 +3,12 @@ export interface ICourse {
 	name: string
 	sourceLang: string
 	targetLang: string
+	sections: ISection[]
+}
+
+export interface ISection {
+	id: string
+	name: string
 	tracks: ITrack[]
 }
 

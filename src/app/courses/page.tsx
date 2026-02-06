@@ -1,8 +1,8 @@
-import CourseCard from "@/components/courseCard/CourseCard"
+import CourseCard from "@/components/cards/courseCard/CourseCard"
 import { ICourse } from "@/core/interfaces"
 import styles from "./page.module.css"
-import ArrowBack from "@/components/arrowBack/ArrowBack"
-import CreateCourseCard from "@/components/courseCard/createCourseCard/CreateCourseCard"
+import ArrowBack from "@/components/ui/arrowBack/ArrowBack"
+import CreateCourseCard from "@/components/cards/courseCard/createCourseCard/CreateCourseCard"
 
 const getCourses = async (): Promise<ICourse[]> => {
 	try {
@@ -23,12 +23,6 @@ export default async function Courses() {
 		<div className={styles.wrapper}>
 			<ArrowBack href="/" text="Back to dashboard" />
 			<h1 className={styles.title}>Courses:</h1>
-
-			<input
-				className={styles.input}
-				type="text"
-				placeholder="Search for a course..."
-			/>
 
 			<ul className={styles.cards}>
 				{courses.map((course) => (

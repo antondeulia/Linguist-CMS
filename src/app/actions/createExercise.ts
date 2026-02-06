@@ -1,6 +1,6 @@
 "use server"
 
-import { Segment } from "@/components/exerciseCard/createExerciseModal/textSegment/TextSegment"
+import { Segment } from "@/components/cards/exerciseCard/createExerciseModal/textSegment/TextSegment"
 import { revalidatePath } from "next/cache"
 
 export type CreateExerciseInput = {

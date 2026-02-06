@@ -2,11 +2,11 @@
 
 import { revalidatePath } from "next/cache"
 
-export default async function createTrackAction(data: {
+export default async function createSectionAction(data: {
 	name: string
-	sectionId: string
+	courseId: string
 }) {
-	const res = await fetch("http://localhost:4200/api/tracks", {
+	const res = await fetch("http://localhost:4200/api/sections", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
